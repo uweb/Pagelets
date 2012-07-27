@@ -22,11 +22,21 @@ if ( !class_exists( "Pagelets" ) )
         add_action('init', array($this, 'register_pagelets'), 8);
         add_filter( 'post_updated_messages', array( $this, 'pagelets_updated_messages' ) );
         add_action( 'add_meta_boxes', array( $this, 'pagelets_add_custom_box' ));
+ 
+        add_action('admin_init', array( $this, 'pagelet_js' ));
 
         add_action( 'save_post', array( $this, 'pagelet_save_postdata' ));
 
         add_action( 'widgets_init', array($this, 'register_pagelet_widget'));
 
+      }
+      
+      function pagelet_js ()
+      {
+        wp_register_script( 'jquery.combobox.js', get_template_directory_uri() . '/admin/js/jquery.combobox.js', array('jquery-ui-core'), '1.0', true); 
+        wp_enqueue_style( 'jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/smoothness/jquery-ui.css'); 
+        wp_enqueue_script('jquery-ui-autocomplete');
+        wp_enqueue_script( 'jquery.combobox.js');
       }
 
       function register_pagelets() 
@@ -108,7 +118,8 @@ if ( !class_exists( "Pagelets" ) )
         echo $this->list_pagelets($pagelet);
         echo " <script type=\"text/javascript\">
                 jQuery(document).ready(function($){
-                  $('#pagelet').combobox();
+                  if ($().combobox)
+                    $('#pagelet').combobox();
                 });
                </script>
              ";
