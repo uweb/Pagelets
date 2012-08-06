@@ -33,7 +33,7 @@ if ( !class_exists( "Pagelets" ) )
       
       function pagelet_js ()
       {
-        wp_register_script( 'jquery.combobox.js', get_template_directory_uri() . '/admin/js/jquery.combobox.js', array('jquery-ui-core'), '1.0', true); 
+        wp_register_script( 'jquery.combobox.js', plugins_url( '/jquery.combobox.js' , __FILE__ ), array('jquery-ui-core'), '1.0', true); 
         wp_enqueue_style( 'jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/smoothness/jquery-ui.css'); 
         wp_enqueue_script('jquery-ui-autocomplete');
         wp_enqueue_script( 'jquery.combobox.js');
