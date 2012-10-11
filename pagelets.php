@@ -213,5 +213,36 @@ if ( !class_exists( "Pagelet_Widget" ) )
 
 }
 
+if ( !class_exists( "Pagelet_Shortcode" ) ) 
+{
+  class Pagelet_Shortcode
+  {
+    public function Pagelet_Shortcode() {
+      add_shortcode( 'pagelet', array($this, 'shortcode') );
+    }
+
+    public function shortcode( $atts ) {
+      $params = shortcode_atts(array(
+        'id'=>''
+      ), $atts );
+
+      if ( ! is_numeric($params['id']) )
+        return '';
+
+      $pagelet = get_post($params['id']);
+
+      if ( $pagelet->post_status != 'publish' )
+        return '';
+
+      $content = apply_filters( 'the_content', $pagelet->post_content );
+      return $content;
+       
+    }
+  }
+
+  new Pagelet_Shortcode;
+
+}
+
     
 ?>
