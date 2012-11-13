@@ -207,7 +207,9 @@ if ( !class_exists( "Pagelet_Widget" ) )
       echo $after_widget;
     }
 
-    public function form( $instance ) { }
+    public function form( $instance ) { 
+      echo "<p><small>When a pagelet is assigned to a page, this widget will be replaced by the pagelet's title and content.</small></p>"; 
+    }
 
   }
 
