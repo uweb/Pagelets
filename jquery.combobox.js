@@ -109,7 +109,3 @@
     }
   });
 })(jQuery);
-
-(function($){
-  $('#post_author_override').combobox();
-})(jQuery);
