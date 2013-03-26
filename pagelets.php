@@ -236,7 +236,7 @@ if ( !class_exists( "Pagelet_Shortcode" ) )
       if ( $pagelet->post_status != 'publish' )
         return '';
 
-      $content = apply_filters( 'the_content', $pagelet->post_content );
+      $content = wpautop( $pagelet->post_content );
       return $content;
        
     }
