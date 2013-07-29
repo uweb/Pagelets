@@ -1,9 +1,9 @@
 /**
- * Taken from the combobox example on the jQuery UI site: http://jqueryui.com/demos/autocomplete/#combobox
+ * Better organization for the pagelet dropdown selection
  *
- * Quick [hack] fix for the author dropdown which has over a hundred listings in UW News
- *
+ * For more infor visit the example jQuery UI page: http://jqueryui.com/demos/autocomplete/#combobox
  */
+
 (function($){
   $.widget( "ui.combobox", {
     _create: function() {
