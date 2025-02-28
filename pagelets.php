@@ -2,7 +2,7 @@
 
     /*
     Plugin Name: UW Pagelets
-    Plugin URI:
+    Plugin URI: https://github.com/uweb/Pagelets
     Description: Adds a custom post type that can be displayed on certain pages as a widget.
     Version: 2.0
     Author: Dane Odekirk
@@ -228,7 +228,7 @@ if ( !class_exists( "Pagelet_Shortcode" ) )
 
       $pagelet = get_post($params['id']);
 
-      if ( $pagelet->post_status != 'publish' )
+      if ( empty($pagelet) || $pagelet->post_status != 'publish' )
         return '';
 
       $content = wpautop( $pagelet->post_content );
